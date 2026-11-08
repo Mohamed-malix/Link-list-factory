@@ -67,6 +67,32 @@ class NodeList {
 
         return undefined;
     }
+
+    findIndex(node) {
+        let temp =this.head;
+        let index=0;
+        while(temp!=null && temp.value!=node){
+            temp= temp.next;
+            index++;
+        }
+
+        if(temp!=null) return index;
+        else{
+            return -1;
+        }
+    }
+
+    contains(nodeValue) {
+        let temp = this.head;
+        while(temp!=null && temp.value!=nodeValue){
+            temp= temp.next;
+        }
+
+        if(temp!= null) return true;
+        else{
+            return false;
+        }
+    }
 }
 
 
@@ -76,6 +102,6 @@ nodeList.append("B");
 nodeList.insertAfter("C", "A");
 nodeList.append("D");
 
-console.log(nodeList, "first test");
-console.log(nodeList.at(3), "second test"); 
-console.log(nodeList.getSize(), "second test"); 
+console.log(nodeList.at(0), "first test"); 
+console.log(nodeList.contains("F"), "second test");
+console.log(nodeList.findIndex("A"), "third test");
