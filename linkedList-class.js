@@ -21,20 +21,33 @@ class NodeList {
         if(!this.head){
             this.head=node;
         }else{
-            while(this.head.next){
-
+            let temp= this.head;
+            while(temp.next!=null){
+                temp= temp.next;
             }
+            temp.next=node;
         }
 
         this.length++;
+    }
+
+    insertAfter(insNode, afNode) {
+        let temp =this.head;
+        while(temp.next!=null && !temp.value==afNode){
+            temp= temp.next;
+        }
+        
+        if(temp !=null){
+            temp.next= new Node(insNode, temp.next);
+        }
     }
 }
 
 
 const nodeList= new NodeList();
-const node1= new Node("A");
-const node2= new Node("B");
+nodeList.add("A");
+nodeList.add("B");
+nodeList.insertAfter("C", "A");
 
-nodeList.add(node1);
-node1.next=node2;
-console.log(nodeList, "test test");
+console.log(nodeList, "first test");
+console.log(nodeList.getSize(), "second test");
