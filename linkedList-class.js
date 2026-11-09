@@ -93,6 +93,35 @@ class NodeList {
             return false;
         }
     }
+
+    pop() {
+
+        if(this.length=0) {
+            return undefined;
+        }
+
+        this.head =this.head.next;
+        return this.head;            
+  
+
+    }
+
+    toString() {
+        let string="";
+        let temp = this.head;
+
+        if(this.length==0){
+            return "";
+        }
+
+        while(temp!=null) {
+            string+= `( ${temp.value} ) -> `;
+            temp=temp.next;
+        }
+        string+= "null";
+
+        return string;
+    }
 }
 
 
@@ -103,5 +132,6 @@ nodeList.insertAfter("C", "A");
 nodeList.append("D");
 
 console.log(nodeList.at(0), "first test"); 
-console.log(nodeList.contains("F"), "second test");
-console.log(nodeList.findIndex("A"), "third test");
+// console.log(nodeList.pop(), "second test");
+// console.log(nodeList.findIndex("A"), "third test");
+console.log(nodeList.toString());
