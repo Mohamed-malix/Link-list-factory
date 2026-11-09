@@ -56,6 +56,25 @@ class NodeList {
         this.length++;
     }
 
+    insertAt(index, ...values) {
+
+        let temp =this.head;
+        for(let i=0;temp!=null && i!=index; i++){
+            temp= temp.next;
+        }
+
+        if(temp!=null){
+            
+            for(let i=values.length-1; i>=0 ; i--) {
+                let nwNode= new Node(values[i], temp.next);
+                temp.next= nwNode;
+            }
+
+            return temp;
+        }       
+
+    }
+
     at(index) {
         let temp = this.head;
         for(let i=0; i<this.length; i++) {
@@ -128,10 +147,10 @@ class NodeList {
 const nodeList= new NodeList();
 nodeList.append("A");
 nodeList.append("B");
-nodeList.insertAfter("C", "A");
-nodeList.append("D");
+nodeList.append("C");
 
 console.log(nodeList.at(0), "first test"); 
 // console.log(nodeList.pop(), "second test");
 // console.log(nodeList.findIndex("A"), "third test");
+console.log(nodeList.insertAt(1, "H", "i", "W"));
 console.log(nodeList.toString());
